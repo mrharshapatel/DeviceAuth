@@ -1,0 +1,23 @@
+
+# React / Node.js
+node_modules/
+dist/
+build/
+.env
+.env.*
+!.env.example
+
+# Java / Maven
+target/
+*.class
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local configuration
+application-local.properties
+application-local.yml
+apache-maven-3.10.0/
