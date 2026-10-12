@@ -18,15 +18,17 @@ public class DeviceAuthApplication {
     @Bean
     public CommandLineRunner initAdmin(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         return args -> {
-            String adminEmail = "admin@example.com";
-            if (userRepository.findByEmail(adminEmail).isEmpty()) {
-                AppUser admin = new AppUser();
-                admin.setName("System Admin");
-                admin.setEmail(adminEmail);
-                admin.setPasswordHash(passwordEncoder.encode("Admin@12345"));
-                admin.setRole(Role.ADMIN);
-                userRepository.save(admin);
-                System.out.println("Default Admin account seeded: " + adminEmail);
+            String[] adminEmails = {"admin@deviceauth.com", "admin@example.com"};
+            for (String email : adminEmails) {
+                if (userRepository.findByEmail(email).isEmpty()) {
+                    AppUser admin = new AppUser();
+                    admin.setName("System Administrator");
+                    admin.setEmail(email);
+                    admin.setPasswordHash(passwordEncoder.encode("Admin@12345"));
+                    admin.setRole(Role.ADMIN);
+                    userRepository.save(admin);
+                    System.out.println("Default Admin account seeded: " + email);
+                }
             }
         };
     }
