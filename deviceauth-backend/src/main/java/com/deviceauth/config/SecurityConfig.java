@@ -65,7 +65,10 @@ public class SecurityConfig {
         ));
 
         config.setAllowedOriginPatterns(List.of(
-                "https://device-auth-mxt5-*.vercel.app"
+                "http://localhost:[*]",
+                "http://127.0.0.1:[*]",
+                "https://*.vercel.app",
+                "https://*.github.io"
         ));
 
         config.setAllowedMethods(List.of(
